@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const departementSchema=new Schema({
-    codeDepartement:{
+const regionSchema=new Schema({
+    codeRegion:{
 
         type:String,
         required:true,
@@ -21,5 +21,5 @@ const departementSchema=new Schema({
         required:true
     }
 })
- var Departement=mongoose.model('Departement',departementSchema);
-module.exports=Departement;
+ var region=mongoose.model('Region',regionSchema);
+module.exports=region;
