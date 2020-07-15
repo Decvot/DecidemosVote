@@ -35,7 +35,7 @@ const votationsSchema=mongoose.Schema({
     listeBureau:{
         type:[{
             type:mongoose.Schema.ObjectId,
-            ref:'Bureaux'
+            ref:'Bureau'
         }],
         required:true
     },
@@ -78,5 +78,5 @@ const votationsSchema=mongoose.Schema({
     }
     
 })
-const votations = mongoose.model('Votations',cantonSchema);
+const votations = mongoose.model('Votations',votationsSchema);
 module.exports = votations

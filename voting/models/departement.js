@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const paysSchema=new Schema({
-    codePays:{
+const departementSchema=new Schema({
+    codeDepartement:{
 
         type:String,
         required:true,
@@ -21,5 +21,5 @@ const paysSchema=new Schema({
         required:true
     }
 })
- var pays=mongoose.model('Pays',paysSchema);
-module.exports=pays;
+ var Departement=mongoose.model('Departement',departementSchema);
+module.exports=Departement;

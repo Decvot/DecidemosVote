@@ -1,28 +1,35 @@
 const mongoose = require('mongoose');
 
 const bureauxSchema = mongoose.Schema({
+    
+    codeBureau:{
+        type:String,
+        required:true
+    },
+    
     nom:{
         type:String,
         required:[true,'nom est oblegatoire']
     },
+
     adresse:{
         type:String,
         required:true
     },
     commune:{
-        type:mongoose.Schema.ObjectId,
+        type:String,
         ref:'Commune'
     },
     canton:{
-        type:mongoose.Schema.ObjectId,
+        type:String,
         ref:'Canton'
     },
     circonscription:{
-        type:mongoose.Schema.ObjectId,
+        type:String,
         ref:'Circonscription'
 
     }
 })
 
-const Bureaux = mongoose.model('Bureaux',bureauxSchema);
+const Bureaux = mongoose.model('Bureau',bureauxSchema);
 module.exports = Bureaux ;

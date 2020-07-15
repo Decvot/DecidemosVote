@@ -14,7 +14,7 @@ const cantonSchema=mongoose.Schema({
     bureaux:{
         type:[{
             type:mongoose.Schema.ObjectId,
-            ref:'Bureaux'
+            ref:'Bureau'
         }],
         required:true
     }

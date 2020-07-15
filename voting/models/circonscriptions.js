@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bureaux=require("./bureaux");
 
 const circonscriptionsSchema=new Schema({
     codeCirconscriptions:{
@@ -17,7 +16,7 @@ const circonscriptionsSchema=new Schema({
     bureaux:{
         type:[{
             type:mongoose.Schema.ObjectId,
-            ref:'Bureaux'
+            ref:'Bureau'
         }],
         required:true
     }
