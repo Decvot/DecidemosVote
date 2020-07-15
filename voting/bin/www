@@ -4,9 +4,20 @@
  * Module dependencies.
  */
 
+const mongoose = require('mongoose')
 var app = require('../app');
 var debug = require('debug')('voting:server');
 var http = require('http');
+mongoose
+  .connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+  })
+  .then((con) => {
+    console.log('connected !');
+  });
 
 /**
  * Get port from environment and store in Express.

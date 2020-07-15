@@ -78,5 +78,5 @@ const votationsSchema=mongoose.Schema({
     }
     
 })
-const votations = mongoose.model('vVotations',cantonSchema);
+const votations = mongoose.model('Votations',cantonSchema);
 module.exports = votations
