@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const bureaux=require("./bureaux");
 
-const paysSchema=new Schema({
-    codePays:{
+const departementSchema=new Schema({
+    codeDepartement:{
 
         type:String,
         required:true,
@@ -16,10 +17,10 @@ const paysSchema=new Schema({
     bureaux:{
         type:[{
             type:mongoose.Schema.ObjectId,
-            ref:'Bureau'
+            ref:'Bureaux'
         }],
         required:true
     }
 })
- var pays=mongoose.model('Pays',paysSchema);
-module.exports=pays;
+ var Departement=mongoose.model('Departement',communesSchema);
+module.exports=Departement;

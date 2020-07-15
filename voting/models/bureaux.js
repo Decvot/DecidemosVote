@@ -24,5 +24,5 @@ const bureauxSchema = mongoose.Schema({
     }
 })
 
-const Bureaux = mongoose.model('Bureaux',bureauxSchema);
+const Bureaux = mongoose.model('Bureau',bureauxSchema);
 module.exports = Bureaux ;

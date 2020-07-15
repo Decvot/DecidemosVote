@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const bureaux=require("./bureaux");
 
 const communesSchema=new Schema({
     codeCommune:{
@@ -17,7 +16,7 @@ const communesSchema=new Schema({
     bureaux:{
         type:[{
             type:mongoose.Schema.ObjectId,
-            ref:'Bureaux'
+            ref:'Bureau'
         }],
         required:true
     }
