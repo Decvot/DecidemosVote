@@ -19,5 +19,5 @@ const communesSchema=new Schema({
         required:true
     }
 })
- var communes=mongoose.model('communes',communesSchema);
+ var communes=mongoose.model('Commune',communesSchema);
 module.exports=communes;
