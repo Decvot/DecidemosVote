@@ -13,6 +13,10 @@ const communesSchema=new Schema({
         required:true
 
     },
+    postalCode:{
+        type:String,
+        required:true
+    },
     bureaux:{
         type:[{
             type:mongoose.Schema.ObjectId,
