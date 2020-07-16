@@ -19,7 +19,7 @@ exports.createBureau = async (req, res) => {
   };
 exports.getOneBureau = async (req, res) => {
     try {
-       const doc = await bureau.findById(req.params.id);
+       const doc = await bureau.findOne({codeBureau:req.params.code});
       if (!doc) throw 'no document found';
   
       res.status(200).json({
@@ -38,9 +38,7 @@ exports.getOneBureau = async (req, res) => {
 
   exports.getAllBureaux = async (req, res) => {
     try {
-        const doc = await bureau.find({});
-
-        
+      const doc = await bureau.find({});
       res.status(200).json({
         status: 'success',
         data: {
@@ -57,7 +55,7 @@ exports.getOneBureau = async (req, res) => {
 
   exports.updateOneBureau = async (req, res) => {
     try {
-      const updatedDoc = await bureau.findByIdAndUpdate(req.params.id, req.body, {
+      const updatedDoc = await bureau.findOneAndUpdate({codeBureau:req.params.code}, req.body, {
         new: true,
         //to run the validator again
         runValidators: true,
@@ -79,7 +77,7 @@ exports.getOneBureau = async (req, res) => {
 
 exports.deleteOneBurau =  async (req, res) => {
     try {
-      const doc = await bureau.findByIdAndDelete(req.params.id);
+      const doc = await bureau.findOneAndDelete({codeBureau:req.params.code});
       if (!doc) {
         throw 'no document found with this id';
       }
