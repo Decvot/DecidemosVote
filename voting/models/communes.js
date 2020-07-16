@@ -17,13 +17,22 @@ const communesSchema=new Schema({
         type:String,
         required:true
     },
-    bureaux:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Bureau'
-        }],
-        required:true
+    latitude:{
+        type:String
+    },
+    longitude:{
+        type:String
     }
-})
+   },
+   {
+    //make calculated field show up in the output
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  })
+/* communesSchema.virtual('bureaux',{
+    ref:'Bureau',
+    foreignField: 'commune',
+    localField: 'codeCommune',
+}) */
  var communes=mongoose.model('Commune',communesSchema);
 module.exports=communes;

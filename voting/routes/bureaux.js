@@ -5,7 +5,7 @@ const fs = require('fs');
 /* GET bureaux . */
 
 router.get('/', async function(req, res, next) {
-    const b = await bureux.findOne({"commune":"6033"});
+    const b = await bureux.findOne({"commune":"72374"});
 
     res.json(b)
 });
