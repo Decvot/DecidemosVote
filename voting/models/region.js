@@ -8,7 +8,13 @@ const regionSchema=new Schema({
         required:true,
         unique:true
     },
-    libelle:{
+    codePays:{
+
+        type:String,
+        required:true,
+        unique:true
+    },
+    libelleRegion:{
         type:String,
         required:true
 
