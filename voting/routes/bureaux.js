@@ -1,20 +1,17 @@
 var express = require('express');
-const bureux = require('../models/bureaux')
+const bureauController = require('../controllers/bureauController')
 var router = express.Router();
-const fs = require('fs');
+
 /* GET bureaux . */
 
-router.get('/', async function(req, res, next) {
-    const b = await bureux.findOne({"commune":"72374"});
+router.route('/')
+.get(bureauController.getAllBureaux)
+.post(bureauController.createBureau)
 
-    res.json(b)
-});
+router.route('/:id')
+.get(bureauController.getOneBureau)
+.patch(bureauController.updateOneBureau)
+.delete(bureauController.deleteOneBurau)
 
-router.post('/',async (req,res,next)=>{
-    await bureux.create(req.body)
 
-    res.json({
-        status:'good'
-    })
-})
 module.exports = router;

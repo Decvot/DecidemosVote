@@ -13,13 +13,7 @@ const regionSchema=new Schema({
         required:true
 
     },
-    bureaux:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Bureau'
-        }],
-        required:true
-    }
+    
 })
  var region=mongoose.model('Region',regionSchema);
 module.exports=region;

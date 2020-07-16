@@ -5,10 +5,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
+
 const bureauxRouter = require('./routes/bureaux')
-const commune = require('./models/communes')
+
 var app = express();
 
 // view engine setup
@@ -22,31 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Routes
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/bureaux',bureauxRouter);
-app.use('/commune',async (req,res,next)=>{
-  try {
-    const doc = await commune.find().populate('bureaux');
-  
-  
 
-   if (!doc) throw 'no document found';
-
-   res.status(200).json({
-     status: 'success',
-     data: {
-       doc,
-     },
-   });
- } catch (err) {
-   res.status(400).json({
-     status: 'fail',
-     message: err,
-   });
- }
-  
-})
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
