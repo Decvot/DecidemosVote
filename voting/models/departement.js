@@ -8,6 +8,11 @@ const departementSchema=new Schema({
         required:true,
         unique:true
     },
+    codeRegion:{
+
+        type:String,
+        required:true,
+    },
     libelle:{
         type:String,
         required:true
