@@ -6,6 +6,9 @@ const cantonSchema=mongoose.Schema({
         type:String,
         required:true,
         unique:true
+    }, codeDepartement:{
+        type:String,
+        required:true,
     },
     libelle:{
         type:String,
