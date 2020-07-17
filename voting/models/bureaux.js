@@ -21,8 +21,7 @@ const bureauxSchema = mongoose.Schema({
         ref:'Commune'
     },
     canton:{
-        type:String,
-        ref:'Canton'
+        type:String
     },
     circonscription:{
         type:String,
