@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Bureaux = require('./bureaux');
+
 
 const cantonSchema=mongoose.Schema({
     codeCanton:{
@@ -11,9 +11,6 @@ const cantonSchema=mongoose.Schema({
         type:String,
         required:true
 
-    },
-    bureaux:{
-        type:[Bureaux]
     }
 },
 { toJSON: { virtuals: true } }
