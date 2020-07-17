@@ -18,11 +18,17 @@ exports.createBureau = async (req, res) => {
     }
   };
 exports.getOneBureau = async (req, res) => {
-  console.log(req.params.id)
-  console.log(req.params.code)
+ console.log(req.params.id)
+ console.log(req.params.code)
     try {
-       const doc = await bureau.findOne(
-        { $or: [ { codeBureau: req.params.code }, { id: req.params.id } ] }   )
+      let doc ;
+      if(req.params.id){
+         doc = await bureau.findById(req.params.id)
+       }
+       if(req.params.code){
+         doc = await bureau.findOne( { codeBureau: req.params.code })
+       }
+       
       if (!doc) throw 'no document found';
   
       res.status(200).json({
