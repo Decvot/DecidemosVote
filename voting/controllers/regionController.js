@@ -42,11 +42,17 @@ exports.findAllRegions=async(req,res)=>{
 }
 exports.findRegion= async (req, res) => {
     try {
-       const doc = await region.findById(req.params.id);
-     
-     
+      
+      var  doc = await region.find({codeRegion:req.params.id});
+
   
-      if (!doc) throw 'no document found';
+     if (!doc) {
+      var doc = await region.findById(req.params.id);
+    }
+ 
+      if (!doc)throw 'no document found';
+
+      
   
       res.status(200).json({
         status: 'success',
