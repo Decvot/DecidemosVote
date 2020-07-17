@@ -42,7 +42,7 @@ exports.getOneCanton = async (req, res) => {
 
   exports.getAllCanton = async (req, res) => {
     try {
-      const doc = await canton.find({}).populate('bureaux')
+      const doc = await canton.find({})
       res.status(200).json({
         status: 'success',
         data: {
