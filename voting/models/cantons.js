@@ -15,9 +15,9 @@ const cantonSchema=mongoose.Schema({
         required:true
 
     },
-    bureaux:{
-        type:[Bureaux]
-    }
+    // bureaux:{
+    //     type:[Bureaux]
+    // }
 },
 { toJSON: { virtuals: true } }
 )
