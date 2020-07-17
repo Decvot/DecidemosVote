@@ -9,7 +9,7 @@ var logger = require('morgan');
 
 const bureauxRouter = require('./routes/bureaux');
 const regionRouter = require('./routes/region');
-
+const communeRouter=require('./routes/commune')
 var app = express();
 
 // view engine setup
@@ -25,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Routes
 app.use('/bureaux',bureauxRouter);
 app.use('/region',regionRouter);
+app.use('/commune',communeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

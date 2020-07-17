@@ -41,16 +41,16 @@ exports.findAllRegions=async(req,res)=>{
 
 }
 exports.findRegion= async (req, res) => {
-    try {
-      
-      var  doc = await region.find({codeRegion:req.params.id});
+  var  doc; 
 
+  try {
+      
+        doc = await region.find({codeRegion:req.params.id});
   
-     if (!doc) {
-      var doc = await region.findById(req.params.id);
+     if (doc.length==0) {
+       doc = await region.findById(req.params.id);
     }
- 
-      if (!doc)throw 'no document found';
+      if (doc.length==0)throw 'no document found';
 
       
   
@@ -91,4 +91,24 @@ exports.findRegion= async (req, res) => {
 
       }
   
-      
+      exports.updateOneRegion = async (req, res) => {
+        try {
+          const updatedDoc = await bureau.findOneAndUpdate({ $or: [ { codeBureau: req.params.code }, { id: req.params.id } ] }, req.body, {
+            new: true,
+            //to run the validator again
+            runValidators: true,
+          });
+          if (!updatedDoc) throw 'document not found';
+          res.status(201).json({
+            status: 'success',
+            data: {
+              updatedDoc,
+            },
+          });
+        } catch (err) {
+          res.status(400).json({
+            status: 'fail',
+            message: err,
+          });
+        }
+    }

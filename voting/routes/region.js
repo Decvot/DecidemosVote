@@ -1,9 +1,6 @@
 var express = require('express');
-const region = require('../models/region')
 const regionController= require('../controllers/regionController');
-const { route } = require('./bureaux');
 var router = express.Router();
-/* GET bureaux . */
 
 router.post('/', regionController.createRegion);
 
