@@ -29,6 +29,7 @@ const bureauxSchema = mongoose.Schema({
         ref:'Circonscription'
 
     }
+    ,
 })
 
 const Bureaux = mongoose.model('Bureau',bureauxSchema);

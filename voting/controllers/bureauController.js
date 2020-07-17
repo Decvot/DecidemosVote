@@ -4,6 +4,7 @@ const bureau = require('../models/bureaux');
 exports.createBureau = async (req, res) => {
     try {
       const newDoc = await bureau.create(req.body);
+                      
       res.status(201).json({
         status: 'success',
         data: {
@@ -18,16 +19,10 @@ exports.createBureau = async (req, res) => {
     }
   };
 exports.getOneBureau = async (req, res) => {
- console.log(req.params.id)
- console.log(req.params.code)
+
     try {
-      let doc ;
-      if(req.params.id){
-         doc = await bureau.findById(req.params.id)
-       }
-       if(req.params.code){
-         doc = await bureau.findOne( { codeBureau: req.params.code })
-       }
+
+      const doc = await bureau.findOne({codeBureau:req.params.code,canton:req.params.canton})
        
       if (!doc) throw 'no document found';
   
@@ -47,7 +42,7 @@ exports.getOneBureau = async (req, res) => {
 
   exports.getAllBureaux = async (req, res) => {
     try {
-      const doc = await bureau.find({});
+      const doc = await bureau.find();
       res.status(200).json({
         status: 'success',
         data: {
@@ -102,3 +97,5 @@ exports.deleteOneBurau =  async (req, res) => {
       });
     }
   };
+
+ 
