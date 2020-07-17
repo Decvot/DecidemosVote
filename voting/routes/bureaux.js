@@ -8,7 +8,7 @@ router.route('/')
 .get(bureauController.getAllBureaux)
 .post(bureauController.createBureau)
 
-router.route('/:code?/:id?')
+router.route('/:code/:canton')
 .get(bureauController.getOneBureau)
 .patch(bureauController.updateOneBureau)
 .delete(bureauController.deleteOneBurau)

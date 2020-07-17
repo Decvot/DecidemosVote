@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Bureaux = require('./bureaux');
 
 const cantonSchema=mongoose.Schema({
     codeCanton:{
@@ -15,13 +16,12 @@ const cantonSchema=mongoose.Schema({
 
     },
     bureaux:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Bureau'
-        }],
-        required:true
+        type:[Bureaux]
     }
+},
+{ toJSON: { virtuals: true } }
+)
 
-})
+
 const Canton = mongoose.model('Canton',cantonSchema);
 module.exports = Canton

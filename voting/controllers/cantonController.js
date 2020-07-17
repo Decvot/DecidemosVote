@@ -1,9 +1,9 @@
-const bureau = require('../models/bureaux');
+const canton = require('../models/cantons');
 
 
-exports.createBureau = async (req, res) => {
+exports.createCanton = async (req, res) => {
     try {
-      const newDoc = await bureau.create(req.body);
+      const newDoc = await canton.create(req.body);
                       
       res.status(201).json({
         status: 'success',
@@ -18,11 +18,11 @@ exports.createBureau = async (req, res) => {
       });
     }
   };
-exports.getOneBureau = async (req, res) => {
+exports.getOneCanton = async (req, res) => {
 
     try {
 
-      const doc = await bureau.findOne({codeBureau:req.params.code,canton:req.params.canton})
+      const doc = await canton.findOne({codeCanton:req.params.code})
        
       if (!doc) throw 'no document found';
   
@@ -40,9 +40,9 @@ exports.getOneBureau = async (req, res) => {
     }
   };
 
-  exports.getAllBureaux = async (req, res) => {
+  exports.getAllCanton = async (req, res) => {
     try {
-      const doc = await bureau.find();
+      const doc = await canton.find()
       res.status(200).json({
         status: 'success',
         data: {
@@ -57,9 +57,9 @@ exports.getOneBureau = async (req, res) => {
     }
   };
 
-  exports.updateOneBureau = async (req, res) => {
+  exports.updateOneCanton = async (req, res) => {
     try {
-      const updatedDoc = await bureau.findOneAndUpdate({ $or: [ { codeBureau: req.params.code }, { id: req.params.id } ] }, req.body, {
+      const updatedDoc = await canton.findOneAndUpdate({codeCanton:req.params.code}, req.body, {
         new: true,
         //to run the validator again
         runValidators: true,
@@ -79,9 +79,9 @@ exports.getOneBureau = async (req, res) => {
     }
 }
 
-exports.deleteOneBurau =  async (req, res) => {
+exports.deleteOneCanton =  async (req, res) => {
     try {
-      const doc = await bureau.findOneAndDelete({ $or: [ { codeBureau: req.params.code }, { id: req.params.id } ] });
+      const doc = await canton.findOneAndDelete({codeCanton:req.params.code});
       if (!doc) {
         throw 'no document found with this id';
       }
