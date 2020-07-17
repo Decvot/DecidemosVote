@@ -30,10 +30,6 @@ const communesSchema=new Schema({
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   })
- communesSchema.virtual('bureaux',{
-    ref:'Bureau',
-    foreignField: 'commune',
-    localField: 'codeCommune',
-}) 
+ 
  var communes=mongoose.model('Commune',communesSchema);
 module.exports=communes;

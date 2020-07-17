@@ -18,7 +18,11 @@ const cantonSchema=mongoose.Schema({
 },
 { toJSON: { virtuals: true } }
 )
-
+cantonSchema.virtual('bureaux',{
+    ref:'Bureau',
+    foreignField: 'canton',
+    localField: 'codeCanton',
+}) 
 
 const Canton = mongoose.model('Canton',cantonSchema);
 module.exports = Canton
