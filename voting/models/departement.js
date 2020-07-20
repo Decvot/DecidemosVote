@@ -20,5 +20,6 @@ const departementSchema=new Schema({
     bureaux:[]
 
 })
+
  var Departement=mongoose.model('Departement',departementSchema);
 module.exports=Departement;

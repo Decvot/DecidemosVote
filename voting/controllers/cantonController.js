@@ -98,4 +98,30 @@ exports.deleteOneCanton =  async (req, res) => {
     }
   };
 
- 
+ exports.cantonDep = async (req,res)=>{
+   try {
+     const data = await canton.aggregate([
+       {
+         $group:{
+         _id:'$codeDepartement',
+         bureaux:{ $push: '$bureaux' },
+          
+         
+       }
+      },
+       { $sort : { _id : 1 } },
+      
+      ])
+      res.status(201).json({
+        status: 'success',
+        data: {
+          data
+        },
+      });
+    } catch (err) {
+      res.status(400).json({
+        status: 'fail',
+        message: err,
+      });
+    }
+  };
