@@ -18,13 +18,8 @@ const departementSchema=new Schema({
         required:true
 
     },
-    bureaux:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Bureau'
-        }],
-        required:true
-    }
+    bureaux:[]
+
 })
  var Departement=mongoose.model('Departement',departementSchema);
 module.exports=Departement;

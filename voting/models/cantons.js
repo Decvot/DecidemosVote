@@ -17,7 +17,7 @@ const cantonSchema=mongoose.Schema({
 
     },
     bureaux:{
-        type:[Array]
+        type:[]
     }
 },
 
