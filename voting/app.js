@@ -11,6 +11,7 @@ const bureauxRouter = require('./routes/bureaux');
 const regionRouter = require('./routes/region');
 const cantonRouter = require('./routes/canton')
 const departementRouter = require('./routes/departement')
+const paystRouter = require('./routes/pays')
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/bureaux',bureauxRouter);
 app.use('/region',regionRouter);
 app.use('/canton',cantonRouter);
 app.use('/departement',departementRouter);
+app.use('/pays',paystRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

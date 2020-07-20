@@ -14,11 +14,7 @@ const paysSchema=new Schema({
 
     },
     bureaux:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Bureau'
-        }],
-        required:true
+        type:[]
     }
 })
  var pays=mongoose.model('Pays',paysSchema);
