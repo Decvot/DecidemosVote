@@ -64,7 +64,7 @@ exports.getOneCanton = async (req, res) => {
         //to run the validator again
         runValidators: true,
       });
-      if (!updatedDoc) throw 'document not found';
+      if (!updatedDoc) throw 'document not found  ss';
       res.status(201).json({
         status: 'success',
         data: {
