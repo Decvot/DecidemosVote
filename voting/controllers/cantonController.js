@@ -1,5 +1,6 @@
 const canton = require('../models/cantons');
-
+const dep = require('../models/departement');
+const { findOneAndUpdate } = require('../models/cantons');
 
 exports.createCanton = async (req, res) => {
     try {
@@ -98,7 +99,7 @@ exports.deleteOneCanton =  async (req, res) => {
     }
   };
 
- exports.cantonDep = async (req,res)=>{
+/*  exports.cantonDep = async (req,res)=>{
    try {
      const data = await canton.aggregate([
        {
@@ -111,7 +112,20 @@ exports.deleteOneCanton =  async (req, res) => {
       },
        { $sort : { _id : 1 } },
       
-      ])
+      ]).limit(20)
+    data.forEach(async (elt)=>{
+     
+      try {
+        
+         const doc = await dep.findOneAndUpdate({abc:elt._id},{ $push: { bureaux: elt.bureaux } }) 
+        console.log(doc)
+      } catch (error) {
+        console.log(error)
+      }
+      
+    
+    
+    })
       res.status(201).json({
         status: 'success',
         data: {
@@ -124,4 +138,4 @@ exports.deleteOneCanton =  async (req, res) => {
         message: err,
       });
     }
-  };
+  }; */
