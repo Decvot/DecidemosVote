@@ -6,7 +6,7 @@ var router = express.Router();
 
 router.route('/')
 .get(communeController.findAllCommunes);
-router.route('/:code?/:id?')
+router.route('/:id')
 .get(communeController.findCommunes)
 
 

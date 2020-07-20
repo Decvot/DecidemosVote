@@ -9,7 +9,10 @@ var logger = require('morgan');
 
 const bureauxRouter = require('./routes/bureaux');
 const regionRouter = require('./routes/region');
-const cantonRouter = require('./routes/canton')
+const cantonRouter = require('./routes/canton');
+const communeRouter = require('./routes/commune');
+const departementRouter = require('./routes/departement');
+
 var app = express();
 
 // view engine setup
@@ -26,6 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bureaux',bureauxRouter);
 app.use('/region',regionRouter);
 app.use('/canton',cantonRouter);
+app.use('/commune',communeRouter);
+app.use('/departement',departementRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -34,7 +39,7 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+  // set locals, only providing error in development9*777777777777777
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 

@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bureaux=require('../models/bureaux');
 const Schema = mongoose.Schema;
 
 const communesSchema=new Schema({
@@ -24,12 +23,22 @@ const communesSchema=new Schema({
     longitude:{
         type:String
    
-    }},
-    {
-    // make calculated field show up in the output
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
-  })
+    },
+    bureaux:{
+        type:[Array]
+    }
+
+})
+//     {
+//     // make calculated field show up in the output
+//     toJSON: { virtuals: true }}
+  
+//   )
+//   communesSchema.virtual('bureaux',{
+//     ref:'Bureau',
+//     foreignField: 'commune',
+//     localField: 'codeCommune',
+// }) 
  
  var communes=mongoose.model('Commune',communesSchema);
 module.exports=communes;

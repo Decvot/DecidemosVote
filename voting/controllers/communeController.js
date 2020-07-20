@@ -4,7 +4,7 @@ const communes = require('../models/communes');
 exports.findAllCommunes=async(req,res)=>{
 
     try{
-        const doc= await communes.find({});
+        const doc= await communes.find({}).limit(10);
         if (!doc) throw 'the regions are empty';
 
 
@@ -26,23 +26,22 @@ exports.findAllCommunes=async(req,res)=>{
 
 }
 exports.findCommunes= async (req, res) => {
-  var  doc; 
 
   try {
-      
-        doc = await communes.find({codeCommune:req.params.id});
-  
-     if (doc.length==0) {
-       doc = await communes.findById(req.params.id);
-    }
-      if (doc.length==0)throw 'no document found';
+    var  docs; 
+
+
+    docs = await communes.find({codeCommune:req.params.id});
+
+     
+      if (docs.length==0)throw 'no document found';
 
       
   
       res.status(200).json({
         status: 'success',
         data: {
-          doc,
+          docs,
         },
       });
     } catch (err) {
