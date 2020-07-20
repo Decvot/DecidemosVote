@@ -20,7 +20,7 @@ exports.findAllRegions=async(req,res)=>{
 
     try{
         const doc= await region.find({});
-        if (!doc) throw 'the regions are empty';
+        if (!doc) throw 'no document found';
 
 
         res.status(200).json({

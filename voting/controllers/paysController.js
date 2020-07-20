@@ -1,9 +1,9 @@
-const departement = require('../models/departement');
+const pays = require('../models/pays');
 
 
-exports.createDepartement = async (req, res) => {
+exports.createPays = async (req, res) => {
     try {
-      const newDoc = await departement.create(req.body);
+      const newDoc = await pays.create(req.body);
                       
       res.status(201).json({
         status: 'success',
@@ -18,11 +18,11 @@ exports.createDepartement = async (req, res) => {
       });
     }
   };
-exports.getOneDepartement = async (req, res) => {
+exports.getOnePays = async (req, res) => {
 
     try {
 
-      const doc = await departement.findOne({codeCanton:req.params.code})
+      const doc = await pays.findOne({codeCanton:req.params.code})
        
       if (!doc) throw 'no document found';
   
@@ -40,9 +40,9 @@ exports.getOneDepartement = async (req, res) => {
     }
   };
 
-  exports.getAllDepartement = async (req, res) => {
+  exports.getAllPays = async (req, res) => {
     try {
-      const doc = await departement.find({})
+      const doc = await pays.find({})
       res.status(200).json({
         status: 'success',
         data: {
@@ -57,9 +57,9 @@ exports.getOneDepartement = async (req, res) => {
     }
   };
 
-  exports.updateOneDepartement = async (req, res) => {
+  exports.updateOnPpays = async (req, res) => {
     try {
-      const updatedDoc = await departement.findOneAndUpdate({codeDepartement:req.params.codeDepartement}, req.body, {
+      const updatedDoc = await pays.findOneAndUpdate({codeDepartement:req.params.codeDepartement}, req.body, {
         new: true,
         //to run the validator again
         runValidators: true,
@@ -79,9 +79,9 @@ exports.getOneDepartement = async (req, res) => {
     }
 }
 
-exports.deleteOneDepartement =  async (req, res) => {
+exports.deleteOnePays =  async (req, res) => {
     try {
-      const doc = await departement.findOneAndDelete({codeDepartement:req.params.codeDepartement});
+      const doc = await pays.findOneAndDelete({codeDepartement:req.params.codeDepartement});
       if (!doc) {
         throw 'no document found with this id';
       }

@@ -9,29 +9,17 @@ const departementSchema=new Schema({
         unique:true
     },
     codeRegion:{
-
-        string:Array
-        },
+        type:String,
+        required:true,
+    },
     libelle:{
         type:String,
         required:true
 
-    }
-    // ,
-    // bureaux:{
-    //     type:String
-    // }
-},{
-        // make calculated field show up in the output
-        toJSON: { virtuals: true }}
-      
-     )
+    },
+    bureaux:[]
 
-     departementSchema.virtual('codeContant',{
-         ref:'Canton',
-         foreignField: 'codeDepartement',
-         localField: 'abc',
-     }) 
-     
+})
+
  var Departement=mongoose.model('Departement',departementSchema);
 module.exports=Departement;
