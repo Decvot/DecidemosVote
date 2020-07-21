@@ -1,4 +1,5 @@
 const departement = require('../models/departement');
+const region = require('../models/region');
 
 
 exports.createDepartement = async (req, res) => {
@@ -42,7 +43,32 @@ exports.getOneDepartement = async (req, res) => {
 
   exports.getAllDepartement = async (req, res) => {
     try {
-      const doc = await departement.find({})
+
+      const doc = await departement.aggregate([
+        {
+          $group:{
+          _id:'$codRegion',
+          bureaux:{ $push: '$bureaux' },
+           
+          
+        }
+       },
+        { $sort : { _id : 1 } },
+       
+       ])
+
+       //
+       doc.forEach(async depe => {
+       
+        try {
+       const doc2 = await region.find({codeReg:depe._id})
+       console.log(doc2)
+
+          await region.findOneAndUpdate({codeReg:depe._id},depe.bureaux)
+        }catch(err){
+
+        }})
+      // const doc = await departement.find({})
       res.status(200).json({
         status: 'success',
         data: {

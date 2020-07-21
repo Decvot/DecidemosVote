@@ -1,5 +1,5 @@
 const region = require('../models/region');
-
+const dep=require('../models/departement');
 exports.createRegion = async (req, res) => {
     try {
       const newDoc = await region.create(req.body);
@@ -19,7 +19,27 @@ exports.createRegion = async (req, res) => {
 exports.findAllRegions=async(req,res)=>{
 
     try{
-        const doc= await region.find({});
+      const doc=  await region.aggregate([
+        { $lookup:
+           {
+             from: 'Departement',
+             localField: 'codeReg',
+             foreignField: 'codRegion',
+             as: 'orderdetails'
+           }
+         }
+        ])
+      //   .toArray(function(err, res) {
+      //    if (err) throw err;
+      //    console.log(JSON.stringify(res));
+        
+      //  });
+      //  region.find({});
+        
+        // const doc2 = departement.find({});
+        // console.log(doc2);
+      console.log(doc)
+
         if (!doc) throw 'no document found';
 
 
