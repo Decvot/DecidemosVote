@@ -1,6 +1,6 @@
 const canton = require('../models/cantons');
 const dep = require('../models/departement');
-const { findOneAndUpdate } = require('../models/cantons');
+
 
 exports.createCanton = async (req, res) => {
     try {

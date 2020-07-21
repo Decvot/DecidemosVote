@@ -14,11 +14,8 @@ const circonscriptionsSchema=new Schema({
 
     },
     bureaux:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Bureau'
-        }],
-        required:true
+        type:[],
+        
     }
 })
  var circonscriptions=mongoose.model('Circonscription',circonscriptionsSchema);
