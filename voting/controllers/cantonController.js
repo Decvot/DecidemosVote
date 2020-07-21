@@ -112,19 +112,10 @@ exports.deleteOneCanton =  async (req, res) => {
       },
        { $sort : { _id : 1 } },
       
-      ]).limit(20)
-    data.forEach(async (elt)=>{
-     
-      try {
-        
-         const doc = await dep.findOneAndUpdate({abc:elt._id},{ $push: { bureaux: elt.bureaux } }) 
-        console.log(doc)
-      } catch (error) {
-        console.log(error)
-      }
-      
-    
-    
+      ]).limit(11)
+      let arr = []
+    data[10].bureaux.foreach((elt)=>{
+      console.log(elt.bureaux)
     })
       res.status(201).json({
         status: 'success',

@@ -12,14 +12,24 @@ const regionSchema=new Schema({
 
         type:String,
         required:true,
-        unique:true
+        
     },
     libelleRegion:{
         type:String,
         required:true
 
-    },
+    }
     
+    
+}, {
+
+   toJSON: { virtuals: true }
+}
+)
+regionSchema.virtual('bureaux',{
+    ref:'Departement',
+    foreignField: 'codeRegion',
+    localField: 'codeRegion',
 })
  var region=mongoose.model('Region',regionSchema);
 module.exports=region;

@@ -19,7 +19,7 @@ exports.createRegion = async (req, res) => {
 exports.findAllRegions=async(req,res)=>{
 
     try{
-        const doc= await region.find({});
+        const doc= await region.find({}).populate('bureaux');
         if (!doc) throw 'no document found';
 
 
