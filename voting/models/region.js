@@ -10,11 +10,9 @@ const regionSchema=new Schema({
     },
     codePays:{
 
-        type:String,
-        required:true,
-        unique:true
-    },
-    libelleRegion:{
+        type:String
+            },
+    libelle:{
         type:String,
         required:true
 
