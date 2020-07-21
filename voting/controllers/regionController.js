@@ -19,7 +19,7 @@ exports.createRegion = async (req, res) => {
 exports.findAllRegions=async(req,res)=>{
 
     try{
-      const doc=  await region.aggregate([
+     /*  const doc=  await region.aggregate([
         { $lookup:
            {
              from: 'Departement',
@@ -28,7 +28,7 @@ exports.findAllRegions=async(req,res)=>{
              as: 'orderdetails'
            }
          }
-        ])
+        ]) */
       //   .toArray(function(err, res) {
       //    if (err) throw err;
       //    console.log(JSON.stringify(res));
@@ -38,7 +38,7 @@ exports.findAllRegions=async(req,res)=>{
         
         // const doc2 = departement.find({});
         // console.log(doc2);
-      console.log(doc)
+      const doc = await region.find().populate('bureaux')
 
         if (!doc) throw 'no document found';
 
