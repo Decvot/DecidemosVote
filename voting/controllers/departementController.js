@@ -45,6 +45,7 @@ exports.getOneDepartement = async (req, res) => {
     try {
 
       
+     /*  const doc = await departement.find({}).populate('bureaux') */
       const doc = await departement.find({})
       res.status(200).json({
         status: 'success',
