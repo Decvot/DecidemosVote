@@ -99,7 +99,7 @@ exports.deleteOneCanton =  async (req, res) => {
     }
   };
 
- exports.cantonDep = async (req,res)=>{
+  exports.cantonDep = async (req,res)=>{
    try {
      const data = await canton.aggregate([
        {
