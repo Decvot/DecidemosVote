@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const regionSchema=new Schema({
-    codeRegion:{
+    codeReg:{
 
         type:String,
         required:true,
@@ -28,8 +28,8 @@ const regionSchema=new Schema({
 )
 regionSchema.virtual('bureaux',{
     ref:'Departement',
+    localField: 'codeReg',
     foreignField: 'codeRegion',
-    localField: 'codeRegion',
 })
  var region=mongoose.model('Region',regionSchema);
 module.exports=region;

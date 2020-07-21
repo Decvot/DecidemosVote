@@ -8,7 +8,7 @@ const departementSchema=new Schema({
         required:true,
         unique:true
     },
-    codeRegion:{
+    codRegion:{
         type:String,
         required:true,
     },

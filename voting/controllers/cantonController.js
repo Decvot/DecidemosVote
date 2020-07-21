@@ -139,9 +139,7 @@ exports.deleteOneCanton =  async (req, res) => {
         
          
       })
-     /* console.log(data[10].bureaux[6].forEach(element => {
-       console.log(element)
-     })) */
+     
       res.status(201).json({
         status: 'success',
         data: {
@@ -155,3 +153,6 @@ exports.deleteOneCanton =  async (req, res) => {
       });
     }
   }; 
+
+
+  
