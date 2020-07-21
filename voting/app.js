@@ -12,6 +12,7 @@ const regionRouter = require('./routes/region');
 const cantonRouter = require('./routes/canton')
 const departementRouter = require('./routes/departement')
 const paystRouter = require('./routes/pays')
+const communeRouter = require('./routes/commune')
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bureaux',bureauxRouter);
 app.use('/region',regionRouter);
 app.use('/canton',cantonRouter);
+app.use('/commune',communeRouter);
 app.use('/departement',departementRouter);
 app.use('/pays',paystRouter);
 
