@@ -112,11 +112,36 @@ exports.deleteOneCanton =  async (req, res) => {
       },
        { $sort : { _id : 1 } },
       
-      ]).limit(11)
-      let arr = []
-    data[10].bureaux.foreach((elt)=>{
-      console.log(elt.bureaux)
-    })
+      ])
+      data.forEach(async depe => {
+        if(depe._id < "10"){
+          depe._id =depe._id.replace('0','')
+         /*  depe._id = "0"+depe._id */
+        }
+        try {
+          await dep.findOneAndUpdate({codeDepartement:depe._id},depe.bureaux)
+          
+         /*  depe.bureaux.forEach(async elt => {
+          
+            elt.forEach(elt =>{
+              
+              doc.bureaux.push(elt)
+              
+            })
+            await dep.findOneAndUpdate({codeDepartement:depe._id},doc)
+          })  */
+          //console.log(doc)
+          //doc.save();
+          //console.log(doc)
+        } catch (error) {
+          
+        }
+        
+         
+      })
+     /* console.log(data[10].bureaux[6].forEach(element => {
+       console.log(element)
+     })) */
       res.status(201).json({
         status: 'success',
         data: {
