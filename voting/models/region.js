@@ -20,19 +20,18 @@ const regionSchema=new Schema({
         required:true
 
     },
-    bureaux:{
-        type:[]
-    }
-    });
+    
+    },
+    { toJSON: { virtuals: true } });
 // },
 // { toJSON: { virtuals: true } }
 // )
 
-// regionSchema.virtual('bureau',{
-//     ref:'Departement',
-//     foreignField: 'codeRegion',
-//     localField: 'codeRegion',
-// }) 
+ regionSchema.virtual('bureaux',{
+     ref:'Departement',
+    foreignField: 'codRegion',
+     localField: 'codeReg',
+}) 
     
 
  var region=mongoose.model('Region',regionSchema);
