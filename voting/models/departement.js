@@ -23,12 +23,12 @@ const departementSchema=new Schema({
 { toJSON: { virtuals: true } }
 )
 
-/* 
-departementSchema.virtual('bureaux',{
+
+departementSchema.virtual('testBureaux',{
     ref:'Canton',
    foreignField: 'codeDepartement',
     localField: 'codeDepartement',
 }) 
- */
+ 
  var Departement=mongoose.model('Departement',departementSchema);
 module.exports=Departement;
