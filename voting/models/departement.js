@@ -17,6 +17,7 @@ const departementSchema=new Schema({
         required:true
 
     },
+    bureaux:[]
     
 
 },
