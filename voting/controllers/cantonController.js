@@ -1,6 +1,6 @@
 const canton = require('../models/cantons');
 const dep = require('../models/departement');
-
+const fs = require('fs')
 
 exports.createCanton = async (req, res) => {
     try {
@@ -113,31 +113,38 @@ exports.deleteOneCanton =  async (req, res) => {
        { $sort : { _id : 1 } },
       
       ])
+      
       data.forEach(async depe => {
+        let bureaux = []
         if(depe._id < "10"){
           depe._id =depe._id.replace('0','')
          /*  depe._id = "0"+depe._id */
         }
+        
         try {
-          await dep.findOneAndUpdate({codeDepartement:depe._id},depe.bureaux)
+          depe.bureaux.forEach(async elt => {
+            
+            if(elt.length){
+              bureaux = bureaux.concat(elt)
+            }
+           
+            //await dep.findOneAndUpdate({codeDepartement:depe._id},doc)
+          })  
+          if(+depe._id === 13){
+
+           console.log('here');
+          }
+          await dep.findOneAndUpdate({codeDepartement:+depe._id},{bureaux:bureaux})
+
+          //AUBE
           
-         /*  depe.bureaux.forEach(async elt => {
+          //console.log('bon') 
           
-            elt.forEach(elt =>{
-              
-              doc.bureaux.push(elt)
-              
-            })
-            await dep.findOneAndUpdate({codeDepartement:depe._id},doc)
-          })  */
-          //console.log(doc)
-          //doc.save();
-          //console.log(doc)
         } catch (error) {
           
         }
         
-         
+       
       })
      
       res.status(201).json({

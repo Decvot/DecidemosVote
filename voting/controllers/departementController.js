@@ -23,7 +23,7 @@ exports.getOneDepartement = async (req, res) => {
 
     try {
 
-      const doc = await departement.findOne({codeCanton:req.params.code})
+      const doc = await departement.findOne({codeDepartement:req.params.codeDepartement})
        
       if (!doc) throw 'no document found';
   
