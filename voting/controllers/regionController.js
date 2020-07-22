@@ -1,5 +1,5 @@
 const region = require('../models/region');
-const dep=require('../models/departement');
+
 exports.createRegion = async (req, res) => {
     try {
       const newDoc = await region.create(req.body);
