@@ -3,7 +3,7 @@ const cantonController = require('../controllers/cantonController')
 var router = express.Router();
 
 /* GET bureaux . */
-// router.route('/depcant').get(cantonController.cantonDep)
+ router.route('/depcant').get(cantonController.cantonDep)
 router.route('/')
 .get(cantonController.getAllCanton)
 .post(cantonController.createCanton)
