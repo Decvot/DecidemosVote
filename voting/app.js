@@ -13,6 +13,7 @@ const cantonRouter = require('./routes/canton')
 const departementRouter = require('./routes/departement')
 const paystRouter = require('./routes/pays')
 const communeRouter = require('./routes/commune')
+const circonscriptionRouter = require('./routes/circonscriptions')
 
 var app = express();
 
@@ -33,7 +34,7 @@ app.use('/canton',cantonRouter);
 app.use('/commune',communeRouter);
 app.use('/departement',departementRouter);
 app.use('/pays',paystRouter);
-
+app.use('/circonscription',circonscriptionRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
