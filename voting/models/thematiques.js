@@ -11,7 +11,7 @@ const thematiquesSchema=mongoose.Schema({
 
     },
     delaiDecisionnaire:{
-       type:integer,
+       type:Number,
         required:true
     }
 
