@@ -14,14 +14,15 @@ const bureauxSchema = mongoose.Schema({
 
     adresse:{
         type:String,
-        required:true
+        required:[true,'adresse est oblegatoire']
     },
     commune:{
         type:String,
         ref:'Commune'
     },
     canton:{
-        type:String
+        type:String,
+        ref:'Canton'
     },
     circonscription:{
         type:String,

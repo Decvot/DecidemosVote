@@ -63,7 +63,7 @@ exports.getOneBureau = async (req, res) => {
 
   exports.updateOneBureau = async (req, res) => {
     try {
-      const updatedDoc = await bureau.findOneAndUpdate({ $or: [ { codeBureau: req.params.code }, { id: req.params.id } ] }, req.body, {
+      const updatedDoc = await bureau.findOneAndUpdate( {codeBureau:req.params.code,commune:req.params.commune}  , req.body, {
         new: true,
         //to run the validator again
         runValidators: true,
@@ -85,7 +85,7 @@ exports.getOneBureau = async (req, res) => {
 
 exports.deleteOneBurau =  async (req, res) => {
     try {
-      const doc = await bureau.findOneAndDelete({ $or: [ { codeBureau: req.params.code }, { id: req.params.id } ] });
+      const doc = await bureau.findOneAndDelete({codeBureau:req.params.code,commune:req.params.commune});
       if (!doc) {
         throw 'no document found with this id';
       }
