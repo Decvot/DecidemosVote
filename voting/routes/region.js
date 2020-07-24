@@ -2,9 +2,13 @@ var express = require('express');
 const regionController= require('../controllers/regionController');
 var router = express.Router();
 
-router.post('/', regionController.createRegion);
 
-router.get('/', regionController.findAllRegions);
 
-router.route('/:id').get(regionController.findRegion).delete(regionController.deleteRegion);
+router.get('/', regionController.findAllRegions)
+      .post('/', regionController.createRegion);
+
+router.route('/:codeRegion')
+      .get(regionController.findRegion)
+      .patch(regionController.updateOneRegion)
+      .delete(regionController.deleteRegion);
 module.exports = router;

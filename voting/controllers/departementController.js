@@ -30,7 +30,6 @@ exports.getOneDepartement = async (req, res) => {
     try {
 
       const doc = await departement.findOne({codeDepartement:req.params.codeDepartement})
-       
       if (!doc) throw 'no document found';
 
       res.status(200).json({
@@ -58,7 +57,15 @@ exports.getOneDepartement = async (req, res) => {
        const docs = await departement.find({})
        if (!docs) throw 'no documents found';
 
-       //this code is used for adding bureaux in 'departement', as soon as 'bureaux'added correctly this code will be deleted  
+
+      res.status(200).json({
+        status: 'success',
+        data: {
+          docs,
+        },
+
+
+        //this code is used for adding bureaux in 'departement', once the 'bureaux'added correctly this code will be deleted  
 
        /* const doc = await departement.find({},'-bureaux').populate('testBureaux','bureaux').limit(10); */
 
@@ -76,13 +83,6 @@ exports.getOneDepartement = async (req, res) => {
       
       ]) */
 
-
-
-      res.status(200).json({
-        status: 'success',
-        data: {
-          docs,
-        },
       });
     } catch (err) {
       res.status(404).json({

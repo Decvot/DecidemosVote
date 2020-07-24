@@ -2,18 +2,25 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const regionSchema=new Schema({
+            //the code of 'region'
+
     codeReg:{
 
         type:String,
         required:true,
         unique:true
     },
+
+
+            //the code of 'pays' that include that specific 'departement'
+
     codePays:{
 
         type:String,
         unique:false
             },
           
+        //the name of the 'region'
 
     libelle:{
         type:String,
@@ -21,11 +28,13 @@ const regionSchema=new Schema({
 
     },
     
-    
+        //the list of 'bureaux' that are included in the 'region'
+
     bureaux:{
         type:[]
     }
     });
+      //this code is used for adding bureaux in region, once the 'bureaux'added correctly this code will be deleted  
 
 //     { toJSON: { virtuals: true } }
     
