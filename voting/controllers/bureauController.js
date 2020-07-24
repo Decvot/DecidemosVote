@@ -1,5 +1,6 @@
 const bureau = require('../models/bureaux');
-
+const communes = require('../models/communes');
+const fs = require('fs')
 
 exports.createBureau = async (req, res) => {
     try {
@@ -22,7 +23,7 @@ exports.getOneBureau = async (req, res) => {
 
     try {
 
-      const doc = await bureau.findOne({codeBureau:req.params.code,canton:req.params.canton})
+      const doc = await bureau.findOne({codeBureau:req.params.code,commune:req.params.commune})
        
       if (!doc) throw 'no document found';
   
@@ -40,13 +41,16 @@ exports.getOneBureau = async (req, res) => {
     }
   };
 
-  exports.getAllBureaux = async (req, res) => {
+  exports.getAllBureaux = async function(req,res)  {
     try {
+
+
+      
       const doc = await bureau.find();
       res.status(200).json({
         status: 'success',
         data: {
-          doc,
+         data
         },
       });
     } catch (err) {
@@ -98,4 +102,41 @@ exports.deleteOneBurau =  async (req, res) => {
     }
   };
 
- 
+  exports.bureauxCanton = async (req,res)=>{
+    try {
+     let canCom = JSON.parse(fs.readFileSync('./codeCommuneCodeContant.json','utf-8'))
+      
+      
+      const doc = await bureau.find({canton:"",commune:{$ne:""}})
+      /* communes.foreach((elt)=>{
+        /* const obj = canCom.filter((eltt)=> eltt.codeCommune == "1025")
+       console.log(obj) 
+       
+      })  */
+      const doc1= await communes.findOneAndUpdate({codeCommune:"1001"})
+   /*  communes.forEach(commune => {
+       canCom.forEach( elt => {
+         //if(+elt.codeCommune == +commune.commune){
+          com.find().then(d => {
+            data = d
+          })
+         //}//
+       })
+        
+    })
+     */
+        res.status(200).json({
+          status: 'success',
+          data: {
+            doc,
+            
+          },
+        });
+      } catch (err) {
+        res.status(400).json({
+          status: 'fail',
+          message: err,
+        });
+      }
+    
+  }
