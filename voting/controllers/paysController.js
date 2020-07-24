@@ -22,7 +22,7 @@ exports.getOnePays = async (req, res) => {
 
     try {
 
-      const doc = await pays.findOne({codeCanton:req.params.code})
+      const doc = await pays.findOne({codePays:req.params.codePays})
        
       if (!doc) throw 'no document found';
   
@@ -59,7 +59,7 @@ exports.getOnePays = async (req, res) => {
 
   exports.updateOnPpays = async (req, res) => {
     try {
-      const updatedDoc = await pays.findOneAndUpdate({codeDepartement:req.params.codeDepartement}, req.body, {
+      const updatedDoc = await pays.findOneAndUpdate({codePays:req.params.codePays}, req.body, {
         new: true,
         //to run the validator again
         runValidators: true,
@@ -81,7 +81,7 @@ exports.getOnePays = async (req, res) => {
 
 exports.deleteOnePays =  async (req, res) => {
     try {
-      const doc = await pays.findOneAndDelete({codeDepartement:req.params.codeDepartement});
+      const doc = await pays.findOneAndDelete({codePays:req.params.codePays});
       if (!doc) {
         throw 'no document found with this id';
       }
