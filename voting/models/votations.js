@@ -1,80 +1,71 @@
 const mongoose = require('mongoose');
 
 const votationsSchema=mongoose.Schema({
+    // the name of the 'votation'
     nom:{
-        type:String,
-        required:true,
+        type:String
     },
-    thematique:{
-        type:mongoose.Schema.ObjectId,
-        ref:'Thematique',
-        required:true
+    // the country of the 'votation'
+    pays:{
+        type:String
 
     },
+    // the 'thematique ' of the 'votation'
+    thematique:{
+        type:String
+
+    },
+    // all the 'communes' list
     listeCommune:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Commune'
-        }],
-        required:true
+        type:[]
+        
     },
+    // the 'listeCanton' list
     listeCanton:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Canton'
-        }],
-        required:true
+        type:[]
     },
+
+    //the 'listeCirconscription' list
     listeCirconscription:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Circonscription'
-        }],
-        required:true
-    },
+        type:[]
+        },
+    //the 'bureau' list
     listeBureau:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Bureau'
-        }],
-        required:true
+        type:[]
     },
+    //the opening date of the 'votation'
     dateOuverture:{
-        type:Date,
-        require:true
+        type:Date
     },
+    //the finishing date of the 'votation'
     dateFermeture:{
-        type:Date,
-        require:true
+        type:Date
     },
+
+    //the next date of 'votation'
     prochaineDateExtractionDecisionaire :{
-        type:Date,
-        require:true
+        type:Date
     },
+
+    //the date numbers
     nbrJoursAvantExtraction:{
-        type:integer,
-        require:true
+        type:Number
     },
+
+    //the pramiry 
     typePrimaire:{
-        type:String,
-        require:true
+        type:String
     },
+
+    
     interneALorganisation:{
-        type: boolean,
-        require:true,
+        type: Boolean
     },
     habite:{
-        type:mongoose.Schema.ObjectId,
-        ref:'Pays',
-        require:true
+        type:String
     },
     nationallité:{
-        type:[{
-            type:mongoose.Schema.ObjectId,
-            ref:'Pays'
-
-        }],
-        require:true
+        type:[]
     }
     
 })

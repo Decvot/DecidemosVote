@@ -14,7 +14,7 @@ const departementRouter = require('./routes/departement')
 const paystRouter = require('./routes/pays')
 const communeRouter = require('./routes/commune')
 const circonscriptionRouter = require('./routes/circonscriptions')
-
+const votationRouter=require('./routes/votation')
 var app = express();
 
 // view engine setup
@@ -35,6 +35,7 @@ app.use('/commune',communeRouter);
 app.use('/departement',departementRouter);
 app.use('/pays',paystRouter);
 app.use('/circonscription',circonscriptionRouter)
+app.use('/votation',votationRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
