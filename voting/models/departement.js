@@ -17,12 +17,10 @@ const departementSchema=new Schema({
         required:true
 
     },
-    bureaux:[]
+    bureaux:{type:[]}
     
 
-},
-{ toJSON: { virtuals: true } }
-)
+})
 
 
 departementSchema.virtual('testBureaux',{
