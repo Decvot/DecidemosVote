@@ -26,7 +26,8 @@ const communesSchema=new Schema({
     },
     bureaux:{
         type:[Array]
-    }
+    },
+    canton:String
 
 })
 //     {
