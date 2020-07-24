@@ -1,8 +1,8 @@
-const communes = require('../models/communes');
+const circonsci = require('../models/circonscriptions');
 
-exports.createCommune = async (req, res) => {
+exports.createcirconsci = async (req, res) => {
   try {
-    const newDoc = await communes.create(req.body);
+    const newDoc = await circonsci.create(req.body);
                     
     res.status(201).json({
       status: 'success',
@@ -18,10 +18,10 @@ exports.createCommune = async (req, res) => {
   }
 };
 
-exports.getAllCommunes=async(req,res)=>{
+exports.getAllcirconsci=async(req,res)=>{
 
     try{
-        const doc= await communes.find({})
+        const doc= await circonsci.find({})
   
         res.status(200).json({
             status: 'success',
@@ -38,11 +38,11 @@ exports.getAllCommunes=async(req,res)=>{
     }
 
 }
-exports.getOneCommunes= async (req, res) => {
+exports.getOnecirconscis= async (req, res) => {
 
   try {
 
-      const docs = await communes.find({codeCommune:req.params.codeCommune});
+      const docs = await circonsci.findOne({codeCirconscriptions:req.params.codeCirconscri});
       if (!docs)throw 'no document found';
   
       res.status(200).json({
@@ -59,14 +59,14 @@ exports.getOneCommunes= async (req, res) => {
     }
   };
   
-  exports.updateOneCommune = async (req, res) => {
+  exports.updateOnecirconsci = async (req, res) => {
     try {
       const obj = Object.assign({},req.body);
       delete obj.bureaux
       console.log(obj)
 
   
-      const updatedDoc = await communes.findOneAndUpdate({codeCommune:req.params.codeCommune},obj, 
+      const updatedDoc = await circonsci.findOneAndUpdate({codeCirconscriptions:req.params.codeCirconscri},obj, 
         {
         new: true,
         //to run the validator again
@@ -87,9 +87,9 @@ exports.getOneCommunes= async (req, res) => {
     }
 }
 
-exports.deleteOneCommune =  async (req, res) => {
+exports.deleteOnecirconsci =  async (req, res) => {
   try {
-    const doc = await communes.findOneAndDelete({codeCommune:req.params.codeCommune});
+    const doc = await circonsci.findOneAndDelete({codeCirconscriptions:req.params.codeCirconscri});
     if (!doc) {
       throw 'no document found with this codeCommune';
     }

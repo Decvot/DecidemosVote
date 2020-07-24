@@ -10,7 +10,7 @@ const circonscriptionsSchema=new Schema({
     },
     libelle:{
         type:String,
-        required:true
+        
 
     },
     bureaux:{
