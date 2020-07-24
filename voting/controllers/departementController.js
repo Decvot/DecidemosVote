@@ -1,6 +1,8 @@
 const departement = require('../models/departement');
-const region = require('../models/region');
 
+/*CRUD API of 'Departement'*/
+
+//create a new 'canton' 
 
 exports.createDepartement = async (req, res) => {
     try {
@@ -12,22 +14,25 @@ exports.createDepartement = async (req, res) => {
           newDoc,
         },
       });
+
     } catch (err) {
       res.status(400).json({
-        status: 'fail',
+        status: 'error at "departement" create',
         message: err,
       });
     }
   };
+
+    //get a  specific 'Departement' using 'code Departement' 
+
 exports.getOneDepartement = async (req, res) => {
 
     try {
 
-      
       const doc = await departement.findOne({codeDepartement:req.params.codeDepartement})
        
       if (!doc) throw 'no document found';
-  
+
       res.status(200).json({
         status: 'success',
         data: {
@@ -35,55 +40,59 @@ exports.getOneDepartement = async (req, res) => {
         },
       });
     } catch (err) {
-      res.status(400).json({
+      res.status(404).json({
         status: 'fail',
         message: err,
       });
     }
   };
+
+
+    //get all 'Departements' 
 
   exports.getAllDepartement = async (req, res) => {
     try {
 
-      const doc = await departement.aggregate([
+      
+       
+       const docs = await departement.find({})
+       if (!docs) throw 'no documents found';
+
+       //this code is used for adding bureaux in 'departement', as soon as 'bureaux'added correctly this code will be deleted  
+
+       /* const doc = await departement.find({},'-bureaux').populate('testBureaux','bureaux').limit(10); */
+
+      /* const data = await departement.aggregate([
         {
-          $group:{
-          _id:'$codRegion',
-          bureaux:{ $push: '$bureaux' },
-           
           
+          $group:{
+          _id:'$codeDepartement',
+          bureaux:{ $push: '$bureaux' },
+          
+         
         }
        },
         { $sort : { _id : 1 } },
-       
-       ])
+      
+      ]) */
 
-       //
-      //  doc.forEach(async depe => {
-       
-      //   try {
-      //  const doc2 = await region.find({codeReg:depe._id})
-      //  console.log(doc2)
 
-      //     await region.findOneAndUpdate({codeReg:depe._id},depe.bureaux)
-      //   }catch(err){
 
-      //   }})
-      //  const doc = await departement.find({},'-bureaux').populate('testBureaux','bureaux').limit(10);
-      // const doc = await departement.find({})
       res.status(200).json({
         status: 'success',
         data: {
-          doc,
+          docs,
         },
       });
     } catch (err) {
-      res.status(400).json({
+      res.status(404).json({
         status: 'fail',
         message: err,
       });
     }
   };
+
+        //update a 'departement'
 
   exports.updateOneDepartement = async (req, res) => {
     try {
@@ -100,12 +109,15 @@ exports.getOneDepartement = async (req, res) => {
         },
       });
     } catch (err) {
-      res.status(400).json({
+      res.status(404).json({
         status: 'fail',
         message: err,
       });
     }
 }
+
+
+    //delete a specific 'departement'
 
 exports.deleteOneDepartement =  async (req, res) => {
     try {
@@ -119,7 +131,7 @@ exports.deleteOneDepartement =  async (req, res) => {
         message: 'doc deleted !',
       });
     } catch (err) {
-      res.status(400).json({
+      res.status(404).json({
         status: 'fail',
         message: err,
       });
